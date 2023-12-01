@@ -49,6 +49,12 @@ def send_email(message):
     print("Email was sent")
 
 
+info = "Hey! a new content was found at Tours.com"
+raw_messages = f"""\
+Subject: Web scraping email
+{info}
+"""
+
 if __name__ == '__main__':
     scraped = scrape(URL)
     extracted = extract(scraped)
@@ -59,4 +65,4 @@ if __name__ == '__main__':
     if extracted != "No upcoming tours":
         if extracted not in content:
             store(extracted)
-            send_email(message="Hey, a new event was found")
+            send_email(message=raw_messages)
